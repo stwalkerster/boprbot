@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blacklist.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Program.cs" />
