@@ -30,6 +30,12 @@ namespace BlockedOpenProxyReviewerBot
             Block b = new Block( );
             b.ipb_id = (int)( values[ 0 ] );
 
+
+            ipb_address = Utility.Net.IPAddress.newFromEncodedString( values[ 1 ] );
+
+
+
+
             return b;
         }
 

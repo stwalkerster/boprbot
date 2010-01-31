@@ -21,7 +21,7 @@ namespace BlockedOpenProxyReviewerBot
 
         public bool openProxy( IPAddress ip )
         {
-
+            return true;
         }
     }
 }

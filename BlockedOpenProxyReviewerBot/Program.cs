@@ -20,7 +20,7 @@ namespace BlockedOpenProxyReviewerBot
             }
             else
             {
-                db = new Database( args[ 0 ], (uint)args[ 1 ], args[ 4 ], args[ 2 ], args[ 3 ] );
+                db = new Database( args[ 0 ], uint.Parse(args[ 1 ]), args[ 4 ], args[ 2 ], args[ 3 ] );
                 runBot( );
             }
         }
@@ -29,7 +29,7 @@ namespace BlockedOpenProxyReviewerBot
 
         void showHelp( )
         {
-            Console.WriteLine( "Usage: mono bopr.exe <server> <port> <username> <password> <schema>" );
+            Console.WriteLine( "Usage: [mono] bopr.exe <server> <port> <username> <password> <schema>" );
         }
 
         void runBot( )
