@@ -50,7 +50,7 @@ namespace BlockedOpenProxyReviewerBot
 
         void runBot( )
         {
-            Block[ ] proxyBlocks = db.getProxyBlocks( );
+            Block[ ] proxyBlocks = db.getProxyBlocks( 10 );
 
             foreach( Block b in proxyBlocks )
             {
@@ -60,8 +60,9 @@ namespace BlockedOpenProxyReviewerBot
                     if( d.openProxy( b.IP ) )
                         count++;
 
-                    Reporter.Instance( ).Add( b, count );
+
                 }
+                Reporter.Instance( ).Add( b, count );
             }
 
             StreamWriter sw = new StreamWriter( "bopr-" + DateTime.Now.ToString( "yyyyMMddHHmmss" ) + ".xml" );

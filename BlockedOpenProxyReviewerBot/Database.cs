@@ -28,9 +28,17 @@ namespace BlockedOpenProxyReviewerBot
             db_connection.Open( );
         }
 
-        public Block[] getProxyBlocks( )
+        public Block[] getProxyBlocks( int limit )
         {
-            MySqlCommand cmd = new MySqlCommand( "SELECT * FROM ipblocks i WHERE ipb_reason LIKE \"%proxy%\" AND ipb_user = 0;" );
+            string cmdText = "SELECT * FROM ipblocks i WHERE ipb_reason LIKE \"%proxy%\" AND ipb_user = 0";
+            if( limit != 0 )
+                cmdText += " LIMIT " + limit.ToString( );
+
+            cmdText += ";";
+            
+            MySqlCommand cmd = new MySqlCommand( cmdText );
+         
+            
             cmd.Connection = db_connection;
             MySqlDataReader dr = cmd.ExecuteReader( );
 

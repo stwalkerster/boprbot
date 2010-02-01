@@ -9,24 +9,24 @@ namespace BlockedOpenProxyReviewerBot
     {
         public Blacklist( IPAddress openProxyResult, string zoneSuffix )
         {
-            result = openProxyResult;
+            OPresult = openProxyResult;
             suffix = zoneSuffix;
         }
 
-        IPAddress result;
+        IPAddress OPresult;
         string suffix;
 
 
         string GetDnsHost( )
         {
-           return Utility.Net.IPAddress.getReversedIpString( result ) + "." + suffix;
+           return Utility.Net.IPAddress.getReversedIpString( OPresult ) + "." + suffix;
         }
 
         public bool openProxy( IPAddress ip )
         {
             IPAddress[] result = Dns.GetHostAddresses( GetDnsHost( ) );
             if( result.Length > 0 )
-                if( result.Contains<IPAddress>( result ) )
+                if( result.Contains<IPAddress>( OPresult ) )
                     return true;
 
             return false;
