@@ -15,13 +15,21 @@ namespace BlockedOpenProxyReviewerBot
 
         IPAddress result;
         string suffix;
-        
 
-        
+
+        string GetDnsHost( )
+        {
+           return Utility.Net.IPAddress.getReversedIpString( result ) + "." + suffix;
+        }
 
         public bool openProxy( IPAddress ip )
         {
-            return true;
+            IPAddress[] result = Dns.GetHostAddresses( GetDnsHost( ) );
+            if( result.Length > 0 )
+                if( result.Contains<IPAddress>( result ) )
+                    return true;
+
+            return false;
         }
     }
 }

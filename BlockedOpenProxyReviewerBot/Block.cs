@@ -100,5 +100,26 @@ namespace BlockedOpenProxyReviewerBot
 
         }
 
+        public int ID
+        {
+            get
+            {
+                return ipb_id;
+            }
+        }
+        public IPAddress IP
+        {
+            get
+            {
+                return ipb_address;
+            }
+        }
+        public DateTime Date
+        {
+            get
+            {
+                return ipb_timestamp;
+            }
+        }
     }
 }

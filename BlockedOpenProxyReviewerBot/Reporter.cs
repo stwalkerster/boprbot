@@ -10,7 +10,7 @@ namespace BlockedOpenProxyReviewerBot
     {
         protected Reporter( )
         {
-            reports = new Utility.DataStructures.LinkListRoot[ Program.BLCOUNT ];
+            blocks = new ArrayList( );
 
         }
         private static Reporter _instance;

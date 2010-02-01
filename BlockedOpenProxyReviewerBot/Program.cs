@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace BlockedOpenProxyReviewerBot
 {
@@ -56,7 +57,7 @@ namespace BlockedOpenProxyReviewerBot
                 int count = 0;
                 foreach( Blacklist d in DNSBL )
                 {
-                    if( d.openProxy( b ) )
+                    if( d.openProxy( b.IP ) )
                         count++;
 
                     Reporter.Instance( ).Add( b, count );
