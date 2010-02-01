@@ -31,5 +31,10 @@ namespace BlockedOpenProxyReviewerBot
 
             blocks.Add( new BlackListCheckResult( BlacklistCount, b ) );
         }
+
+        public void WriteReport( )
+        {
+            //System.Xml.XmlWriter.Create(
+        }
     }
 }

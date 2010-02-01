@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
+using System.Net.Sockets;
 namespace BlockedOpenProxyReviewerBot
 {
     class Blacklist
@@ -25,12 +26,21 @@ namespace BlockedOpenProxyReviewerBot
         public bool openProxy( IPAddress ip )
         {
             string dnsLookup = GetDnsHost( ip );
-            
-            IPAddress[] result = Dns.GetHostAddresses( dnsLookup );
-            if( result.Length > 0 )
-                if( result.Contains<IPAddress>( OPresult ) )
-                    return true;
+            try
+            {
+                IPAddress[ ] result = Dns.GetHostAddresses( dnsLookup );
+                if( result.Length > 0 )
+                    if( result.Contains<IPAddress>( OPresult ) )
+                    {
+                        Logger.Instance( ).Hit( dnsLookup );
+                        return true;
+                    }
+            }
+            catch( SocketException ex )
+            {
 
+            }
+            Logger.Instance( ).Miss( dnsLookup );
             return false;
         }
     }
