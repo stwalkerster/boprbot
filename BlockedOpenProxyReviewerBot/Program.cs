@@ -7,6 +7,8 @@ namespace BlockedOpenProxyReviewerBot
 {
     class Program
     {
+        public const int BLCOUNT = 5;
+
         static void Main( string[ ] args )
         {
             new Program( args );
@@ -36,7 +38,7 @@ namespace BlockedOpenProxyReviewerBot
 
         Blacklist[ ] initialiseBlacklists( )
         {
-            Blacklist[ ] bl = new Blacklist[ 5 ];
+            Blacklist[ ] bl = new Blacklist[ BLCOUNT ];
             bl[ 0 ] = new Blacklist( Utility.Net.IPAddress.newFromString( "127.0.0.9" ), "dnsbl.njabl.org" );
             bl[ 1 ] = new Blacklist( Utility.Net.IPAddress.newFromString( "127.0.0.2" ), "dnsbl.proxybl.org" );
             bl[ 2 ] = new Blacklist( Utility.Net.IPAddress.newFromString( "127.0.0.2" ), "http.dnsbl.sorbs.net" );
@@ -51,8 +53,18 @@ namespace BlockedOpenProxyReviewerBot
 
             foreach( Block b in proxyBlocks )
             {
-                
+                int count = 0;
+                foreach( Blacklist d in DNSBL )
+                {
+                    if( d.openProxy( b ) )
+                        count++;
+
+                    Reporter.Instance( ).Add( b, count );
+                }
             }
+
+            StreamWriter sw = new StreamWriter( "bopr-" + DateTime.Now.ToString( "yyyyMMddHHmmss" ) + ".xml" );
+
         }
     }
 }
