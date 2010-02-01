@@ -30,7 +30,7 @@ namespace BlockedOpenProxyReviewerBot
 
         public Block[] getProxyBlocks( )
         {
-            MySqlCommand cmd = new MySqlCommand( "SELECT * FROM ipblocks i WHERE ipb_reason LIKE \"%proxy%\";" );
+            MySqlCommand cmd = new MySqlCommand( "SELECT * FROM ipblocks i WHERE ipb_reason LIKE \"%proxy%\" AND ipb_user = 0;" );
             cmd.Connection = db_connection;
             MySqlDataReader dr = cmd.ExecuteReader( );
 
