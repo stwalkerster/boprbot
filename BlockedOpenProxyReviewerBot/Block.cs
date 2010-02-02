@@ -135,5 +135,9 @@ namespace BlockedOpenProxyReviewerBot
                 return ipb_by_text;
             }
         }
+        public override string ToString( )
+        {
+            return ipb_address.ToString( );
+        }
     }
 }

@@ -36,7 +36,9 @@ namespace BlockedOpenProxyReviewerBot
         public void WriteReport( Blacklist[] blacklists )
         {
           XmlWriter x =   XmlWriter.Create( "bopr-" + DateTime.Now.ToString( "yyyyMMddHHmmss" ) + ".xml" );
-            //x.WriteDocType()
+
+          x.WriteRaw( "<?xml-stylesheet type=\"text/xsl\" href=\"bopr-xslt.xslt\"?>" );
+
           x.WriteStartElement( "boprbot" );
           
             x.WriteStartElement( "boprblacklist" );

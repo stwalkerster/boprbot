@@ -61,6 +61,9 @@
     <Compile Include="Reporter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bopr-xslt.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="MySql.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
