@@ -45,12 +45,12 @@ namespace BlockedOpenProxyReviewerBot
           foreach( Blacklist bl in blacklists )
           {
               x.WriteStartElement( "blacklist" );
-              x.WriteStartAttribute( "suffix" );
+              x.WriteStartElement( "suffix" );
               x.WriteString( bl.getSuffix() );
-              x.WriteEndAttribute( );
-              x.WriteStartAttribute( "hitip" );
+              x.WriteEndElement( );
+              x.WriteStartElement( "hitip" );
               x.WriteString( bl.getHitIpAddress().ToString() );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
               x.WriteEndElement( );
           }
           x.WriteEndElement( );
@@ -60,29 +60,29 @@ namespace BlockedOpenProxyReviewerBot
           {
               x.WriteStartElement( "ipblock" );
 
-              x.WriteStartAttribute( "ip" );
+              x.WriteStartElement( "ip" );
               x.WriteString( item.blockInfo.IP.ToString() );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
 
-              x.WriteStartAttribute( "timestamp" );
+              x.WriteStartElement( "timestamp" );
               x.WriteString( item.blockInfo.Date.ToString("yyyy-MM-dd HH:mm:ss" ) );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
 
-              x.WriteStartAttribute( "id" );
+              x.WriteStartElement( "id" );
               x.WriteString( item.blockInfo.ID.ToString() );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
 
-              x.WriteStartAttribute( "expiry" );
+              x.WriteStartElement( "expiry" );
               x.WriteString( item.blockInfo.Expiry );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
 
-              x.WriteStartAttribute( "blocker" );
+              x.WriteStartElement( "blocker" );
               x.WriteString( item.blockInfo.By );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
 
-              x.WriteStartAttribute( "hits" );
+              x.WriteStartElement( "hits" );
               x.WriteString( item.blackListCount.ToString() );
-              x.WriteEndAttribute( );
+              x.WriteEndElement( );
 
               x.WriteEndElement( );
           }

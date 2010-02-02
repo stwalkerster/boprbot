@@ -6,7 +6,7 @@
     <xsl:template match="/">
       <html>
         <head>
-          <title>foo</title>
+          <title>BOPRbot</title>
         </head>
         <body>
           <h1>Blocked Open Proxy Review Bot (BOPRbot) Run results:</h1>
@@ -19,7 +19,7 @@
                 <th>Blocker</th>
                 <th>Hits</th>
               </tr>
-              <xsl:for-each select="catalog/cd">
+              <xsl:for-each select="boprbot/bopri/ipblock">
                 <tr>
                   <td>
                     <xsl:value-of select="id"/>
