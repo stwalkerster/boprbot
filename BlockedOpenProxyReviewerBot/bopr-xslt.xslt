@@ -36,7 +36,7 @@
                   <td>
                     <xsl:value-of select="blocker"/>
                   </td>
-                  <td class="hits-<xsl:value-of select="hits"/>">
+                  <td>
                     <xsl:value-of select="hits"/>
                   </td>
                 </tr>
