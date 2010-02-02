@@ -64,7 +64,7 @@ namespace BlockedOpenProxyReviewerBot
             Logger.Instance( ).Log( "Initialising blacklists" );
             DNSBL = initialiseBlacklists( );
             Logger.Instance( ).Log( "Running BOPRbot." );
-            Block[ ] proxyBlocks = db.getProxyBlocks( 10 );
+            Block[ ] proxyBlocks = db.getProxyBlocks( 0 );
             Logger.Instance( ).Log( "Fetched " + proxyBlocks.Length.ToString( ) + " blocks to check." );
             Logger.Instance( ).Log( "Will need to perform " + proxyBlocks.Length * BLCOUNT + " DNS lookups." );
             Logger.Instance( ).Log( "Connecting to IRC..." );
