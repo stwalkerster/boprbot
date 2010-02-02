@@ -87,6 +87,8 @@ namespace BlockedOpenProxyReviewerBot
           x.WriteEndElement( );
 
           x.WriteEndElement( );
+
+          x.Flush( );
         }
     }
 }

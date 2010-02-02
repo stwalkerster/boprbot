@@ -61,15 +61,18 @@ namespace BlockedOpenProxyReviewerBot
             Logger.Instance( ).Log( "Starting execution" );
             foreach( Block b in proxyBlocks )
             {
-                int count = 0;
-                foreach( Blacklist d in DNSBL )
+                if( b.IP != null )
                 {
-                    if( d.openProxy( b.IP ) )
-                        count++;
+                    int count = 0;
+                    foreach( Blacklist d in DNSBL )
+                    {
+                        if( d.openProxy( b.IP ) )
+                            count++;
 
 
+                    }
+                    Reporter.Instance( ).Add( b, count );
                 }
-                Reporter.Instance( ).Add( b, count );
             }
 
             Reporter.Instance( ).WriteReport( DNSBL );
