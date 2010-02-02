@@ -43,5 +43,16 @@ namespace BlockedOpenProxyReviewerBot
             Logger.Instance( ).Miss( dnsLookup );
             return false;
         }
+
+        public string getSuffix( )
+        {
+            return suffix;
+        }
+
+        public IPAddress getHitIpAddress( )
+        {
+            return OPresult;
+        }
+
     }
 }

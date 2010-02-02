@@ -121,5 +121,19 @@ namespace BlockedOpenProxyReviewerBot
                 return ipb_timestamp;
             }
         }
+        public string Expiry
+        {
+            get
+            {
+                return ipb_expiry;
+            }
+        }
+        public string By 
+        {
+            get
+            {
+                return ipb_by_text;
+            }
+        }
     }
 }

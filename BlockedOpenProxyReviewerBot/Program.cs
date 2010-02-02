@@ -72,7 +72,7 @@ namespace BlockedOpenProxyReviewerBot
                 Reporter.Instance( ).Add( b, count );
             }
 
-            StreamWriter sw = new StreamWriter( "bopr-" + DateTime.Now.ToString( "yyyyMMddHHmmss" ) + ".xml" );
+            Reporter.Instance( ).WriteReport( DNSBL );
 
         }
     }
