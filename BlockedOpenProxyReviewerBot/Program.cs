@@ -18,18 +18,25 @@ namespace BlockedOpenProxyReviewerBot
         public Program( string[] args )
         {
             Logger.Instance( ).Log( "Welcome to BOPRbot!" );
-            if( args.Length != 5 )
+            if( args.Length == 1 )
             {
-                showHelp( );
+                Logger.Instance( ).Log( "Using .hmbot configuration file." );
+                Utility.DotHmbotConfigurationFile cnf = new Utility.DotHmbotConfigurationFile( args[ 0 ] );
+                Logger.Instance( ).Log( "Connecting to mysql://" + cnf.mySqlUsername + ":" + cnf.mySqlPassword + "@" + cnf.mySqlServerHostname + ":" + cnf.mySqlServerPort.ToString() + "/" + cnf.mySqlSchema );
+                // server, port, schema, username, password
+                db = new Database( cnf.mySqlServerHostname, cnf.mySqlServerPort, cnf.mySqlSchema, cnf.mySqlUsername, cnf.mySqlPassword );
+                runBot( );
             }
-            else
+            else if(args.Length == 5)
             {
                 Logger.Instance( ).Log( "Connecting to mysql://" + args[ 2 ] + ":" + args[ 3 ] + "@" + args[ 0 ] + ":" + args[ 1 ] + "/" + args[ 4 ] );
                     // server, port, schema, username, password
                 db = new Database( args[ 0 ], uint.Parse(args[ 1 ]), args[ 4 ], args[ 2 ], args[ 3 ] );
-                Logger.Instance( ).Log( "Initialising blacklists" );
-                DNSBL = initialiseBlacklists( );
                 runBot( );
+            }
+            else
+            {
+                showHelp( );
             }
         }
 
@@ -54,6 +61,8 @@ namespace BlockedOpenProxyReviewerBot
 
         void runBot( )
         {
+            Logger.Instance( ).Log( "Initialising blacklists" );
+            DNSBL = initialiseBlacklists( );
             Logger.Instance( ).Log( "Running BOPRbot." );
             Block[ ] proxyBlocks = db.getProxyBlocks( 0 );
             Logger.Instance( ).Log( "Fetched " + proxyBlocks.Length.ToString( ) + " blocks to check." );
