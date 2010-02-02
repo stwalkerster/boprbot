@@ -50,6 +50,7 @@
     <Compile Include="BlackListCheckResult.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="IrcController.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

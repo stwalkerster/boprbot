@@ -67,9 +67,15 @@ namespace BlockedOpenProxyReviewerBot
             Block[ ] proxyBlocks = db.getProxyBlocks( 0 );
             Logger.Instance( ).Log( "Fetched " + proxyBlocks.Length.ToString( ) + " blocks to check." );
             Logger.Instance( ).Log( "Will need to perform " + proxyBlocks.Length * BLCOUNT + " DNS lookups." );
+            Logger.Instance( ).Log( "Connecting to IRC..." );
+            IrcController ic = new IrcController( );
             Logger.Instance( ).Log( "Starting execution" );
-            foreach( Block b in proxyBlocks )
+            ic.setTotal( proxyBlocks.Length );
+            for( int i = 0; i < proxyBlocks.Length; i++ )
             {
+                ic.setPosition( i );
+                Block b = proxyBlocks[ i ];
+
                 if( b.IP != null )
                 {
                     int count = 0;
@@ -82,6 +88,9 @@ namespace BlockedOpenProxyReviewerBot
                     }
                     Reporter.Instance( ).Add( b, count );
                 }
+
+                System.Threading.Thread.Sleep( 500 );
+
             }
 
             Reporter.Instance( ).WriteReport( DNSBL );
